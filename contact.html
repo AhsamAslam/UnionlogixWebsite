@@ -541,7 +541,7 @@ img.emoji {
 <div class="main-form">
 <h2>Leave your Inquiries</h2>
 <p class="font14">Your email address will not be published. Required fields are marked *</p>
-<form action="javascript:sendEmail()" method="post">
+<form class="contact-form">
 <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="Name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your Name *" id="Name"/></span></p>
 <p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="Sender" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your Email *" id="Sender" /></span></p>
 <p><span class="wpcf7-form-control-wrap your-email"><input type="text" name="Subject" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your Subject *" id="Subject" /></span></p>
@@ -704,17 +704,55 @@ img.emoji {
 <a id="back-to-top" href="#" class="show"><i class="flaticon-up-arrow"></i></a>	
 	
 
+<script>
+    const contactForm = document.querySelector('.contact-form');
+    
+	    let name = document.getElementById('Name');
+		let email = document.getElementById('Sender');
+		let subject = document.getElementById('Subject');
+		let message = document.getElementById('Message');
 
+	contactForm.addEventListener('submit', (e)=>{
+		e.preventDefault();
+		
+		let formData = {
+			name: name.value,
+			email: email.value,
+			subject: subject.value,
+			message: message.value
+		}
+		debugger;
+		let xhr = new XMLHttpRequest();
+		xhr.open('POST', '/');
+		xhr.setRequestHeader('content-type', 'application/json');
+		xhr.onload = function(){
+			debugger;
+			console.log(xhr.responseText);
+			if(xhr.responseText == 'success'){
+				alert('Email send');
+				name.value = '';
+				email.value = '';
+				subject.value = '';
+				message.value = '';
+			}else{
+				alert('Something is wrong');
+			}
+		}
+
+		xhr.send(JSON.stringify(formData));
+	})
+
+</script>
 
 
 
 
 <script type='text/javascript' src='./wp-includes/js/jquery/jquery.minaf6c.js?ver=3.6.0' id='jquery-core-js'></script>
 
-<script
+<!-- <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
-  crossorigin="anonymous"></script>
-<script src="https://smtpjs.com/v3/smtp.js"></script>
+  crossorigin="anonymous"></script> -->
+<!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
 
 <script>
 
