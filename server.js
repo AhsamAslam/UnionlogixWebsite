@@ -1,17 +1,25 @@
 const express = require('express');
+const bodyParser = require("body-parser");
+const router = express.Router();
 const app = express();
+// add router in express app
+app.use("/",router);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const nodemailer = require('nodemailer');
 
-const PORT = process.env.PORT || 5500;
+ const PORT = process.env.PORT || 5500
 
-app.use(express.json());
 
 app.get('/', (req, res)=>{
+    debugger;
     res.sendFile(__dirname+ '/Contact.html')
 })
 
-app.post('/', (req, res)=>{
+app.post('/email', (req, res)=>{
+    debugger;
     console.log(req.body);
 
     const transporter = nodemailer.createTransport({
@@ -42,5 +50,5 @@ app.post('/', (req, res)=>{
 })
 
 app.listen(PORT, ()=>{
-    console.log('Server running on port ${PORT}')
+    console.log('Server running on port '+ PORT)
 })
