@@ -3,12 +3,12 @@ const app = express();
 
 const nodemailer = require('nodemailer');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 
 app.use(express.json());
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname+ '/contact.html')
+    res.sendFile(__dirname+ '/Contact.html')
 })
 
 app.post('/', (req, res)=>{
