@@ -15,10 +15,10 @@ const nodemailer = require('nodemailer');
 
 app.get('/', (req, res)=>{
     debugger;
-    res.sendFile(__dirname+ '/server.js')
+    res.sendFile(__dirname+ '/contact.html')
 })
 
-app.post('/', (req, res)=>{
+app.post('/email', (req, res)=>{
     debugger;
     console.log(req.body);
 
