@@ -1,12 +1,12 @@
 const express = require('express');
-const bodyParser = require("body-parser");
-const router = express.Router();
+//const bodyParser = require("body-parser");
+//const router = express.Router();
 const app = express();
 // add router in express app
-app.use("/",router);
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use("/",router);
+app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 const nodemailer = require('nodemailer');
 
@@ -15,10 +15,10 @@ const nodemailer = require('nodemailer');
 
 app.get('/', (req, res)=>{
     debugger;
-    res.sendFile(__dirname+ '/Contact.html')
+    res.sendFile(__dirname+ '/server.js')
 })
 
-app.post('/email', (req, res)=>{
+app.post('/', (req, res)=>{
     debugger;
     console.log(req.body);
 

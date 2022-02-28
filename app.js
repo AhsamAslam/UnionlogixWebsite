@@ -17,7 +17,7 @@
 		}
 		debugger;
 		let xhr = new XMLHttpRequest();
-		xhr.open('POST', '/email');
+		xhr.open('POST', '/');
 		xhr.setRequestHeader('content-type', 'application/json');
 		xhr.onload = function(){
 			debugger;
