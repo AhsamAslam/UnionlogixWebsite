@@ -10,15 +10,15 @@ app.use(express.json());
 
 const nodemailer = require('nodemailer');
 
- const PORT = process.env.PORT || 5500
+ const PORT = process.env.PORT || 5000
 
-
+ app.use(express.static('public'));
 app.get('/', (req, res)=>{
-    debugger;
-    res.sendFile(__dirname+ '/contact.html')
+
+    res.sendFile(__dirname+ '/public/Contact.html')
 })
 
-app.post('/email', (req, res)=>{
+app.post('/', (req, res)=>{
     debugger;
     console.log(req.body);
 
